@@ -1,0 +1,111 @@
+<alfresco-config>
+    <config evaluator="string-compare" condition="activiti$helloWorldUI">
+      <forms>
+         <form>
+            <field-visibility>
+               <show id="bpm:workflowDescription" />
+               <show id="packageItems" />
+               <show id="scwf:helloName" />
+               <show id="transitions" />
+               <show id="bpm:status" />
+            </field-visibility>
+            <appearance>
+               <set id="" appearance="title" label-id="workflow.set.general" />
+               <set id="items" appearance="title" label-id="workflow.set.items" />
+               <set id="progress" appearance="title" label-id="workflow.set.task.progress" />
+               <set id="other" appearance="title" label-id="workflow.set.other" />
+               <field id="bpm:workflowDescription" label-id="workflow.field.message">
+                  <control template="/org/alfresco/components/form/controls/textarea.ftl">
+                     <control-param name="style">width: 95%</control-param>
+                  </control>
+               </field>
+               <field id="packageItems" set="items" />
+               <field id="scwf:helloName" set="other" />
+               <field id="bpm:status" set="progress" />
+            </appearance>
+         </form>
+      </forms>
+    </config>
+    
+    <!-- Document Library config section -->
+    <config evaluator="string-compare" condition="DocumentLibrary">
+    <aspects>
+    <!-- Aspects that a user can see -->
+    <visible>
+        <aspect name="sc:webable" />
+        <aspect name="sc:productRelated" />            
+    </visible>
+
+    <!-- Aspects that a user can add. Same as "visible" if left empty -->
+    <addable>
+    </addable>
+
+    <!-- Aspects that a user can remove. Same as "visible" if left empty -->
+    <removeable>
+    </removeable>
+    <types>
+    <type name="cm:content">
+        <subtype name="sc:doc" />
+        <subtype name="sc:whitepaper" />
+    </type>
+    <type name="sc:doc">
+        <subtype name="sc:whitepaper" />
+    </type>
+</types>
+</aspects>
+
+    </config>
+    
+    <config evaluator="string-compare" condition="activiti$BidFlow">
+  <forms>
+   <form>
+    <field-visibility>
+     <show id="bpm:workflowDescription" />
+     <show id="bpm:workflowDueDate" />
+     <show id="bpm:workflowPriority" />
+     <show id="wf:workDescription" />
+     <show id="packageItems" />   
+     <show id="bpm:comment" />
+     <show id="bpm:sendEMailNotifications" />
+    </field-visibility>
+    <appearance>
+     <set id="" appearance="title" label-id="workflow.set.general" />
+     <set id="info" appearance=""
+      template="/org/alfresco/components/form/2-column-set.ftl" />
+     <set id="items" appearance="title" label-id="workflow.set.items" />
+     <set id="work" appearance="title" label-id="workflow.set.work" />           
+     <set id="other" appearance="title" label-id="workflow.set.other" />
+     <set id="response" appearance="title" label-id="workflow.set.response" />
+
+     <field id="bpm:workflowDescription" label-id="workflow.field.message">
+      <control template="/org/alfresco/components/form/controls/textarea.ftl">
+       <control-param name="style">width: 95%</control-param>
+      </control>
+     </field>
+
+     <field id="bpm:workflowDueDate" label-id="workflow.field.due"
+      set="info" />
+     <field id="bpm:workflowPriority" label-id="workflow.field.priority"
+      set="info">
+      <control
+       template="/org/alfresco/components/form/controls/workflow/priority.ftl" />
+     </field>
+
+
+     <field id="packageItems" set="items" />
+     <field id="wf:workDescription" set="work" />
+     
+     <field id="bpm:sendEMailNotifications" set="other">
+      <control
+       template="/org/alfresco/components/form/controls/workflow/email-notification.ftl" />
+     </field>
+
+     <field id="bpm:comment" label-id="workflow.field.comment"
+      set="response">
+      <control template="/org/alfresco/components/form/controls/textarea.ftl" />
+     </field>
+    </appearance>
+   </form>
+  </forms>
+ </config>
+</alfresco-config>
