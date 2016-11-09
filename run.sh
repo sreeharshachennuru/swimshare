@@ -1,5 +1,6 @@
 #!/bin/bash
-# Note. This script requires Alfresco.war to be running in another Tomcat on port 8080
+# Note.
+# This script requires Alfresco.war to be running in another Tomcat on port 8080
 
 if [[ -z ${MAVEN_OPTS} ]]; then
     echo "The environment variable 'MAVEN_OPTS' is not set, setting it for you";
